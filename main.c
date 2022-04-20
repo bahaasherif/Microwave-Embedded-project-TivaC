@@ -3,5 +3,6 @@
 int main(void)
 {
 	
+	int x = 100;
 	while(1);
 }
