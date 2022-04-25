@@ -27,7 +27,12 @@ Project File Date:  04/24/2022
 <h2>Output:</h2>
 *** Using Compiler 'V6.16', folder: 'D:\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-systick.c(1): warning: In file included from...
+main.c(1): warning: In file included from...
+./gpio.h(88): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+main.c(2): warning: In file included from...
+./systick.h(1): warning: In file included from...
 C:/Users/DELL/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\TM4C123.h(98): warning: In file included from...
 C:/Users/DELL/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(298): warning: anonymous unions are a C11 extension [-Wc11-extensions]
   union {
@@ -161,16 +166,10 @@ C:/Users/DELL/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123
 C:/Users/DELL/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1251): warning: anonymous unions are a C11 extension [-Wc11-extensions]
   union {
   ^
-systick.c(19): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-  CLEAR_BIT((SysTick ->CTRL),0U);
-  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./common_macros.h(5): note: expanded from macro 'CLEAR_BIT'
-#define CLEAR_BIT(REG,BIT)      (REG &=(~(1<<BIT)))
-                                     ~~ ^~~~~~~~~
 45 warnings generated.
-compiling systick.c...
+compiling main.c...
 linking...
-Program Size: Code=1216 RO-data=636 RW-data=0 ZI-data=608  
+Program Size: Code=1052 RO-data=636 RW-data=0 ZI-data=608  
 ".\Objects\Microwave.axf" - 0 Error(s), 45 Warning(s).
 
 <h2>Software Packages used:</h2>
