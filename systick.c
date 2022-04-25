@@ -28,3 +28,19 @@ void delayMs(uint32_t n)
 		for(j=0;j<3180;j++)         //delay for 1 msec
 		{}
 }
+
+void SysTick_Disable(void)
+{
+  CLEAR_BIT((SysTick ->CTRL),0U);
+}void SysTick_Wait1s(uint32_t delay){
+	unsigned long i; 
+	for (i=0; i<delay; i++){       
+		SysTick_Wait(16000000); //wait 1 second
+	}
+}void delayUs(uint32_t n)             
+{
+	volatile uint32_t i,j;							//volatile is important for variables incremented in code
+	for(i=0;i<n;i++)
+		for(j=0;j<3;j++)            //delay for 1 micro second
+		{}
+}
