@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\Microwave.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Microwave.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Tue Apr 26 16:34:13 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Wed Apr 27 15:30:16 2022
 <BR><P>
-<H3>Maximum Stack Usage =         32 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =         40 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; KEYPAD_Getkey &rArr; delayUs
 <P>
@@ -372,7 +372,7 @@ Global Symbols
 <P><STRONG><a name="[b0]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[82]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 40 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; KEYPAD_Getkey &rArr; delayUs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -1274,8 +1274,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8b]"></a>KEYPAD_Getkey</STRONG> (Thumb, 120 bytes, Stack size 24 bytes, keypad.o(.text.KEYPAD_Getkey))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = KEYPAD_Getkey &rArr; delayUs
+<P><STRONG><a name="[8b]"></a>KEYPAD_Getkey</STRONG> (Thumb, 128 bytes, Stack size 32 bytes, keypad.o(.text.KEYPAD_Getkey))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = KEYPAD_Getkey &rArr; delayUs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayUs
 </UL>
@@ -1300,7 +1300,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[83]"></a>main</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = main &rArr; KEYPAD_Getkey &rArr; delayUs
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = main &rArr; KEYPAD_Getkey &rArr; delayUs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Enable
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KEYPAD_Init

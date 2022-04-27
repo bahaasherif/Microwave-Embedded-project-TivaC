@@ -13,6 +13,8 @@
 #define NO_OF_ROW 4
 
 
+#define KEYPAD_PORT  GPIOB
+
 
 /*********
                          FUNCTION PROTOTYPES
