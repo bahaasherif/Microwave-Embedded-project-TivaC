@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\Microwave.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Microwave.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Wed Apr 27 15:30:16 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Wed Apr 27 16:57:55 2022
 <BR><P>
-<H3>Maximum Stack Usage =         40 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =         48 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; KEYPAD_Getkey &rArr; delayUs
+__rt_entry_main &rArr; main &rArr; KEYPAD_Getkey &rArr; delayus
 <P>
 <H3>
 Functions with no stack information
@@ -372,8 +372,8 @@ Global Symbols
 <P><STRONG><a name="[b0]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[82]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; KEYPAD_Getkey &rArr; delayUs
+<BR><BR>[Stack]<UL><LI>Max Depth = 48 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; KEYPAD_Getkey &rArr; delayus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1274,15 +1274,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8b]"></a>KEYPAD_Getkey</STRONG> (Thumb, 128 bytes, Stack size 32 bytes, keypad.o(.text.KEYPAD_Getkey))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = KEYPAD_Getkey &rArr; delayUs
+<P><STRONG><a name="[8b]"></a>KEYPAD_Getkey</STRONG> (Thumb, 148 bytes, Stack size 40 bytes, keypad.o(.text.KEYPAD_Getkey))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = KEYPAD_Getkey &rArr; delayus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayUs
+<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8e]"></a>KEYPAD_Init</STRONG> (Thumb, 70 bytes, Stack size 0 bytes, keypad.o(.text.KEYPAD_Init))
+<P><STRONG><a name="[8e]"></a>KEYPAD_Init</STRONG> (Thumb, 106 bytes, Stack size 0 bytes, keypad.o(.text.KEYPAD_Init))
 <BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1293,14 +1293,14 @@ Global Symbols
 <P><STRONG><a name="[76]"></a>SystemInit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, system_tm4c123.o(.text.SystemInit))
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(.text)
 </UL>
-<P><STRONG><a name="[8c]"></a>delayUs</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, systick.o(.text.delayUs))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = delayUs
+<P><STRONG><a name="[8c]"></a>delayus</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, keypad.o(.text.delayus))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = delayus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KEYPAD_Getkey
 </UL>
 
 <P><STRONG><a name="[83]"></a>main</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = main &rArr; KEYPAD_Getkey &rArr; delayUs
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = main &rArr; KEYPAD_Getkey &rArr; delayus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Enable
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KEYPAD_Init
