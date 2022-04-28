@@ -13,6 +13,9 @@
 #define NO_OF_ROW 4
 
 
+#define KEYPAD_PORT_C  GPIOC
+#define KEYPAD_PORT_E  GPIOE
+
 
 /*********
                          FUNCTION PROTOTYPES
