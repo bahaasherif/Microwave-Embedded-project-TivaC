@@ -27,8 +27,7 @@ Project File Date:  04/26/2022
 <h2>Output:</h2>
 *** Using Compiler 'V6.16', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-keypad.c(1): warning: In file included from...
-./keypad.h(3): warning: In file included from...
+main.c(48): warning: In file included from...
 C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\TM4C123.h(98): warning: In file included from...
 C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(298): warning: anonymous unions are a C11 extension [-Wc11-extensions]
   union {
@@ -162,17 +161,16 @@ C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C12
 C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1251): warning: anonymous unions are a C11 extension [-Wc11-extensions]
   union {
   ^
-keypad.c(1): warning: In file included from...
-./keypad.h(33): warning: no newline at end of file [-Wnewline-eof]
-#endif
-      ^
-keypad.c(35): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
+main.c(115): warning: implicit conversion loses integer precision: 'int' to 'unsigned char' [-Wimplicit-int-conversion]
+        LCD_Write4bits(command << 4 , 0);                        //then lower nibble
+        ~~~~~~~~~~~~~~ ~~~~~~~~^~~~
+main.c(126): warning: implicit conversion loses integer precision: 'int' to 'unsigned char' [-Wimplicit-int-conversion]
+        LCD_Write4bits(data << 4 , RS);     //then lower nibble
+        ~~~~~~~~~~~~~~ ~~~~~^~~~
 46 warnings generated.
-compiling keypad.c...
+compiling main.c...
 linking...
-Program Size: Code=1504 RO-data=636 RW-data=0 ZI-data=608  
+Program Size: Code=992 RO-data=636 RW-data=0 ZI-data=608  
 ".\Objects\Microwave.axf" - 0 Error(s), 46 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -199,9 +197,9 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.5.0
 
    * Component: Keil::Device:Startup:1.0.1
-      Include file:  Device\Include\TM4C123\TM4C123.h
       Source file:   Device\Source\system_TM4C123.c
       Source file:   Device\Source\ARM\startup_TM4C123.s
+      Include file:  Device\Include\TM4C123\TM4C123.h
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

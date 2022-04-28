@@ -25,7 +25,7 @@ void delayMs(uint32_t n)
 {  
 	volatile uint32_t i,j;             //volatile is important for variables incremented in code
 	for(i=0;i<n;i++)
-		for(j=0;j<1590;j++)         //delay for 1 msec
+		for(j=0;j<3180;j++)         //delay for 1 msec
 		{}
 }
 
