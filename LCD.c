@@ -77,6 +77,36 @@ void LCD_clearScreen(void)
 	LCD_sendCommand(CLEAR_COMMAND); //clear display 
 }
 
+void LCD_displayTime(uint16_t minuts,uint16_t seconds)
+{
+  
+  LCD_goToRowColumn(1,5);
+  LCD_PrintINT(minuts);
+	LCD_goToRowColumn(1,7);
+	LCD_displayCharacter(':');
+	LCD_goToRowColumn(1,8);
+	LCD_PrintINT(seconds);
+  
+}
+
+void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str)
+{
+	LCD_goToRowColumn(row,col); /* go to to the required LCD position */
+	LCD_displayString(Str); /* display the string */
+}
+
+void LCD_PrintINT(uint32_t number)
+{
+  uint8_t toprint[4] = {0};
+  sprintf(toprint, "%d", number);
+  int i = 0;
+  while(toprint[i] != '\0')
+  {
+    LCD_displayCharacter(toprint[i]);
+    i++;
+  }
+}
+
 
 
 

@@ -47,5 +47,10 @@ void LCD_goToRowColumn(uint8_t row,uint8_t col);
 
 void LCD_clearScreen(void);
 
+void LCD_displayTime(uint16_t minuts,uint16_t seconds);
+
+void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str);
+
+void LCD_PrintINT(uint32_t number);
 
 #endif /* LCD_H_ */
