@@ -1,8 +1,39 @@
 #include  "TM4C123.h"
+#include "common_macros.h"
 
-void SysTick_Enable (void); // Initialize the SysTick Timer
-void SysTick_Disable(void); // Disable the SysTick timer
-void SysTick_Wait (uint32_t delay); //The delay parameter is in units pf the 16 MHz core clock (62.5 ns)
-void SysTick_Wait1s(uint32_t delay); //This function wait for delay*1s
-void delayMs(uint32_t n);    //Delay for 1 millisecond
+/******************************************************************************************
+              This Function is to intailze SysTick Timer
+******************************************************************************************/			
+
+void SysTick_Init (void); 
+
+/*****************************************************************************************
+              This Fucntion is to disable the systick Timer
+******************************************************************************************/
+
+void SysTick_Disable(void); 
+
+/******************************************************************************************
+           This fucntion is used for delay and the delay parameter is in units pf the 
+					 16 MHz core clock (62.5 ns)
+******************************************************************************************/
+
+void SysTick_Wait (uint32_t delay);
+
+/*****************************************************************************************
+                This Function is used for delay 1 second 
+******************************************************************************************/
+
+void SysTick_Wait1s(uint32_t delay); 
+
+/******************************************************************************************
+                 Function for delay in milli second
+*******************************************************************************************/
+
+void delayMs(uint32_t n);   
+
+/******************************************************************************************
+                 Function for delay in microsecond
+*******************************************************************************************/
+
 void delayUs(uint32_t n);    //Delay for 1 Microsecond     

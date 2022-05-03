@@ -1,8 +1,4 @@
-#include "TM4C123.h"
 #include "keypad.h"
-#include "common_macros.h"
-#include "systick.h"
-
 
 
 const static unsigned char keymap[NO_OF_ROW][No_OF_COL] = {
@@ -14,7 +10,7 @@ const static unsigned char keymap[NO_OF_ROW][No_OF_COL] = {
 
 void KEYPAD_Init(void){
 	
-	 SET_BIT((SYSCTL->RCGCGPIO),2);// Enable clock to PORTC
+	 SET_BIT((SYSCTL->RCGCGPIO),2); // Enable clock to PORTC
 	 SET_BIT((SYSCTL->RCGCGPIO),4); // Enable clock to PORTE
 	 (KEYPAD_PORT_C)->CR  |= 0xF0;  // Allow settings for all pins of PORTC
 	 (KEYPAD_PORT_E)->CR  |= 0x0F; 	// Allow settings for all pins of PORTE
@@ -26,16 +22,23 @@ void KEYPAD_Init(void){
 }
 
 uint8_t KEYPAD_Getkey(void){
+	
 		while(1){
+			
 			for(int i = 0; i < 4; i++)    //Scan columns loop
 			{
 				(KEYPAD_PORT_C)->DATA = (1U << (i+4));
-				delayUs(1);
-				for(int j = 0; j < 4; j++)  //Scan rows
-				{
-					if(BIT_IS_SET(((KEYPAD_PORT_E)->DATA),j))
-					return keymap[j][i];
-				}
+				 delayUs(1);
+				
+				   for(int j = 0; j < 4; j++)  //Scan rows
+				   {
+					     if(BIT_IS_SET(((KEYPAD_PORT_E)->DATA),j))
+					     {
+					      delayMs(250);
+						    return keymap[j][i];
+					     }
+				   }
 			}
+	
 		}
 }
