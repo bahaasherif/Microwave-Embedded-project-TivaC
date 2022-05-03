@@ -39,6 +39,13 @@ void LCD_Init(void);
 
 void LCD_writeBits(uint8_t data, uint8_t control);
 
+void LCD_displayCharacter(uint8_t data);
+
+void LCD_displayString(const uint8_t *Str);
+
+void LCD_goToRowColumn(uint8_t row,uint8_t col);
+
+void LCD_clearScreen(void);
 
 
 #endif /* LCD_H_ */

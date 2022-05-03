@@ -35,7 +35,47 @@ void LCD_sendCommand(uint8_t command)
 	delayMs(2);       
 	
 }
+void LCD_displayCharacter(uint8_t data)
+{
+	LCD_writeBits(data & 0xF0 , RS);   
+	LCD_writeBits((data & 0x0F )<< 4 , RS);     
+	delayUs(40);											
+	
+		
+}
 
+void LCD_displayString(const uint8_t *Str)
+{
+	uint8_t i = 0;
+	while(Str[i] != '\0')
+	{
+		LCD_displayCharacter(Str[i]);
+		i++;
+	}
+}
+
+void LCD_goToRowColumn(uint8_t row,uint8_t col)
+{
+	uint8_t Address;
+	
+	
+	switch(row)
+	{
+		case 0:
+				Address=col;
+				break;
+		case 1:
+				Address=col+0x40;
+				break;
+		
+	}					
+	
+	LCD_sendCommand(Address | SET_CURSOR_LOCATION); 
+}
+void LCD_clearScreen(void)
+{
+	LCD_sendCommand(CLEAR_COMMAND); //clear display 
+}
 
 
 
