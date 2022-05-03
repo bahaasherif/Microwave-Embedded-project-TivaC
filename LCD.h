@@ -39,8 +39,4 @@ void LCD_Init(void);
 
 void LCD_writeBits(uint8_t data, uint8_t control);
 
-
-
-
-
 #endif /* LCD_H_ */
