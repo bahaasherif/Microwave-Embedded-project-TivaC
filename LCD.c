@@ -84,6 +84,16 @@ void LCD_displayTime(uint32_t Time_In_Secs)
 	uint16_t Seconds = Time_In_Secs % 60;
 	uint16_t Minutes = Time_In_Secs / 60;
 	
+	if(Time_In_Secs == 0)
+	{
+		
+		LCD_displayStringRowColumn(1,6,"00:00");
+		
+	}
+	
+	else
+	{
+	
 	LCD_goToRowColumn(1,8);
 	LCD_displayCharacter(':');
 	
@@ -120,6 +130,8 @@ void LCD_displayTime(uint32_t Time_In_Secs)
 			LCD_PrintINT(Minutes);
 			
 	  }
+		
+	}
   
   
 }

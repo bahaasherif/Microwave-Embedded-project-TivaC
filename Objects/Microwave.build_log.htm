@@ -174,14 +174,65 @@ main.c(4): warning: In file included from...
 ./keypad.h(56): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
-main.c(15): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-48 warnings generated.
+main.c(35): warning: passing 'char [9]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                                LCD_displayStringRowColumn(0,4,"POP CORN");
+                                                               ^~~~~~~~~~
+./LCD.h(100): note: passing argument to parameter 'Str' here
+void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str);
+                                                                       ^
+main.c(38): warning: expression result unused [-Wunused-value]
+                                                for(CookingTimeInSecs;CookingTimeInSecs > 0;CookingTimeInSecs --)
+                                                    ^~~~~~~~~~~~~~~~~
+main.c(48): warning: passing 'char [13]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                                LCD_displayStringRowColumn(0,2,"BEEF WEIGHT?");
+                                                               ^~~~~~~~~~~~~~
+./LCD.h(100): note: passing argument to parameter 'Str' here
+void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str);
+                                                                       ^
+main.c(54): warning: passing 'char [7]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                                                LCD_displayString(" kilos");
+                                                                  ^~~~~~~~
+./LCD.h(76): note: passing argument to parameter 'Str' here
+void LCD_displayString(const uint8_t *Str);
+                                      ^
+main.c(59): warning: expression result unused [-Wunused-value]
+                                                for(CookingTimeInSecs;CookingTimeInSecs > 0;CookingTimeInSecs --)
+                                                    ^~~~~~~~~~~~~~~~~
+main.c(69): warning: passing 'char [4]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                                        LCD_displayStringRowColumn(0,7,"ERR");
+                                                                       ^~~~~
+./LCD.h(100): note: passing argument to parameter 'Str' here
+void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str);
+                                                                       ^
+main.c(79): warning: passing 'char [16]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                                LCD_displayStringRowColumn(0,0,"Chicken WEIGHT?");
+                                                               ^~~~~~~~~~~~~~~~~
+./LCD.h(100): note: passing argument to parameter 'Str' here
+void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str);
+                                                                       ^
+main.c(85): warning: passing 'char [7]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                                                LCD_displayString(" kilos");
+                                                                  ^~~~~~~~
+./LCD.h(76): note: passing argument to parameter 'Str' here
+void LCD_displayString(const uint8_t *Str);
+                                      ^
+main.c(90): warning: expression result unused [-Wunused-value]
+                                                for(CookingTimeInSecs;CookingTimeInSecs > 0;CookingTimeInSecs --)
+                                                    ^~~~~~~~~~~~~~~~~
+main.c(100): warning: passing 'char [4]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                                        LCD_displayStringRowColumn(0,7,"ERR");
+                                                                       ^~~~~
+./LCD.h(100): note: passing argument to parameter 'Str' here
+void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str);
+                                                                       ^
+main.c(211): warning: no newline at end of file [-Wnewline-eof]
+//}
+   ^
+58 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=580 RO-data=636 RW-data=0 ZI-data=608  
-".\Objects\Microwave.axf" - 0 Error(s), 48 Warning(s).
+Program Size: Code=3006 RO-data=678 RW-data=0 ZI-data=608  
+".\Objects\Microwave.axf" - 0 Error(s), 58 Warning(s).
 
 <h2>Software Packages used:</h2>
 
