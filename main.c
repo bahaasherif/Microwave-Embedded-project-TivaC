@@ -3,9 +3,11 @@
 #include "systick.h"
 #include "keypad.h"
 
-void Timer(int time);
+
 
 void CASE_B (uint8_t EnteredCookingWeight);
+
+void Display_Time(uint16_t CookingTimeInSecs);
 
 
 int main( void ) {
@@ -20,6 +22,7 @@ int main( void ) {
 	uint8_t COOKING_CASE  = '0';
 	uint16_t CookingTimeInSecs = 0 ;
 	uint8_t EnteredCookingWeight = '0';
+	uint8_t CookingTimeCaseD [] = {"0000"};
 	
 
 	
@@ -34,13 +37,8 @@ int main( void ) {
 			case 'A' :
 				LCD_displayStringRowColumn(0,4,"POP CORN");
 			  CookingTimeInSecs = 60 ;
-			
-						for(CookingTimeInSecs;CookingTimeInSecs > 0;CookingTimeInSecs --)
-						{
-							LCD_displayTime(CookingTimeInSecs);
-							SysTick_Wait1s(1);
-						}
-				 LCD_clearScreen();
+			  Display_Time(CookingTimeInSecs);		
+			  LCD_clearScreen();
 						break ;		
 						
 				ERROR_CASE_B:						
@@ -55,12 +53,7 @@ int main( void ) {
 						SysTick_Wait1s(2);
 						LCD_clearScreen();
 						CookingTimeInSecs = (EnteredCookingWeight - '0') * 30;
-						
-						for(CookingTimeInSecs;CookingTimeInSecs > 0;CookingTimeInSecs --)
-									{
-										LCD_displayTime(CookingTimeInSecs);
-										SysTick_Wait1s(1);
-									}
+						Display_Time(CookingTimeInSecs);
 				    LCD_clearScreen();		
 					}
 					
@@ -86,12 +79,7 @@ int main( void ) {
 						SysTick_Wait1s(2);
 						LCD_clearScreen();
 						CookingTimeInSecs = (EnteredCookingWeight - '0') * 12;
-						
-						for(CookingTimeInSecs;CookingTimeInSecs > 0;CookingTimeInSecs --)
-									{
-										LCD_displayTime(CookingTimeInSecs);
-										SysTick_Wait1s(1);
-									}
+						Display_Time(CookingTimeInSecs);
 				    LCD_clearScreen();		
 					}
 					
@@ -104,6 +92,37 @@ int main( void ) {
 				}
 					break;
 				
+				case 'D' :
+			LCD_displayStringRowColumn(0,1,"Cooking Time?");
+			SysTick_Wait1s(2);
+			LCD_clearScreen();	
+				
+			LCD_displayStringRowColumn(1,6,"00:00");	
+			CookingTimeCaseD[0] = KEYPAD_Getkey();
+			LCD_displayCharRowColumn(1,10,CookingTimeCaseD[0]);
+				
+			CookingTimeCaseD[1] = KEYPAD_Getkey();
+			LCD_displayCharRowColumn(1,9,CookingTimeCaseD[0]);
+			LCD_displayCharRowColumn(1,10,CookingTimeCaseD[1]);
+			
+			CookingTimeCaseD[2] = KEYPAD_Getkey();
+			LCD_displayCharRowColumn(1,7,CookingTimeCaseD[0]);
+			LCD_displayCharRowColumn(1,9,CookingTimeCaseD[1]);
+			LCD_displayCharRowColumn(1,10,CookingTimeCaseD[2]);
+		  
+			CookingTimeCaseD[3] = KEYPAD_Getkey();
+			LCD_displayCharRowColumn(1,6,CookingTimeCaseD[0]);
+			LCD_displayCharRowColumn(1,7,CookingTimeCaseD[1]);
+			LCD_displayCharRowColumn(1,9,CookingTimeCaseD[2]);
+			LCD_displayCharRowColumn(1,10,CookingTimeCaseD[3]);
+				
+			CookingTimeInSecs = ((CookingTimeCaseD[0] - '0') * 600) + ((CookingTimeCaseD[1] - '0') * 60) + ((CookingTimeCaseD[2] - '0') * 10) + ((CookingTimeCaseD[3] - '0'));
+	    Display_Time(CookingTimeInSecs);
+      LCD_clearScreen();			
+	
+			
+				 
+				
 		
 				
 			  
@@ -111,6 +130,16 @@ int main( void ) {
 						
 		}			
   }
+}
+
+void Display_Time(uint16_t CookingTimeInSecs) {
+	
+	for(CookingTimeInSecs;CookingTimeInSecs > 0;CookingTimeInSecs --)
+						{
+							LCD_displayTime(CookingTimeInSecs);
+							SysTick_Wait1s(1);
+						}
+	
 }
 
 //void CASE_B (uint8_t EnteredCookingWeight) {

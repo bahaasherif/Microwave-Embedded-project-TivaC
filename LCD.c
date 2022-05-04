@@ -84,15 +84,7 @@ void LCD_displayTime(uint32_t Time_In_Secs)
 	uint16_t Seconds = Time_In_Secs % 60;
 	uint16_t Minutes = Time_In_Secs / 60;
 	
-	if(Time_In_Secs == 0)
-	{
-		
-		LCD_displayStringRowColumn(1,6,"00:00");
-		
-	}
 	
-	else
-	{
 	
 	LCD_goToRowColumn(1,8);
 	LCD_displayCharacter(':');
@@ -134,7 +126,7 @@ void LCD_displayTime(uint32_t Time_In_Secs)
 	}
   
   
-}
+
 
 void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str)
 {
@@ -154,6 +146,13 @@ void LCD_PrintINT(uint32_t number)
     i++;
   }
 }
+
+void LCD_displayCharRowColumn(uint8_t row,uint8_t col, uint8_t data)
+{
+	LCD_goToRowColumn(row,col); /* go to to the required LCD position */
+	LCD_displayCharacter(data); /* display the string */
+}
+
 
 
 

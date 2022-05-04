@@ -105,4 +105,7 @@ void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str);
 
 void LCD_PrintINT(uint32_t number);
 
+
+void LCD_displayCharRowColumn(uint8_t row,uint8_t col, uint8_t data);
+
 #endif /* LCD_H_ */
