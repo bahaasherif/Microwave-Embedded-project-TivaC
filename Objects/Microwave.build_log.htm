@@ -28,7 +28,7 @@ Project File Date:  05/04/2022
 *** Using Compiler 'V6.16', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
 main.c(1): warning: In file included from...
-./gpio.h(88): warning: no newline at end of file [-Wnewline-eof]
+./gpio.h(90): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
 main.c(2): warning: In file included from...
@@ -174,71 +174,188 @@ main.c(4): warning: In file included from...
 ./keypad.h(56): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
-main.c(38): warning: passing 'char [9]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
-                                LCD_displayStringRowColumn(0,4,"POP CORN");
-                                                               ^~~~~~~~~~
-./LCD.h(100): note: passing argument to parameter 'Str' here
-void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str);
-                                                                       ^
-main.c(46): warning: passing 'char [13]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
-                                LCD_displayStringRowColumn(0,2,"BEEF WEIGHT?");
-                                                               ^~~~~~~~~~~~~~
-./LCD.h(100): note: passing argument to parameter 'Str' here
-void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str);
-                                                                       ^
-main.c(52): warning: passing 'char [7]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
-                                                LCD_displayString(" kilos");
-                                                                  ^~~~~~~~
-./LCD.h(76): note: passing argument to parameter 'Str' here
-void LCD_displayString(const uint8_t *Str);
-                                      ^
-main.c(62): warning: passing 'char [4]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
-                                        LCD_displayStringRowColumn(0,7,"ERR");
-                                                                       ^~~~~
-./LCD.h(100): note: passing argument to parameter 'Str' here
-void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str);
-                                                                       ^
-main.c(72): warning: passing 'char [16]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
-                                LCD_displayStringRowColumn(0,0,"Chicken WEIGHT?");
-                                                               ^~~~~~~~~~~~~~~~~
-./LCD.h(100): note: passing argument to parameter 'Str' here
-void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str);
-                                                                       ^
-main.c(78): warning: passing 'char [7]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
-                                                LCD_displayString(" kilos");
-                                                                  ^~~~~~~~
-./LCD.h(76): note: passing argument to parameter 'Str' here
-void LCD_displayString(const uint8_t *Str);
-                                      ^
-main.c(88): warning: passing 'char [4]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
-                                        LCD_displayStringRowColumn(0,7,"ERR");
-                                                                       ^~~~~
-./LCD.h(100): note: passing argument to parameter 'Str' here
-void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str);
-                                                                       ^
-main.c(96): warning: passing 'char [14]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
-                        LCD_displayStringRowColumn(0,1,"Cooking Time?");
-                                                       ^~~~~~~~~~~~~~~
-./LCD.h(100): note: passing argument to parameter 'Str' here
-void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str);
-                                                                       ^
-main.c(100): warning: passing 'char [6]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
-                        LCD_displayStringRowColumn(1,6,"00:00");        
-                                                       ^~~~~~~
-./LCD.h(100): note: passing argument to parameter 'Str' here
-void LCD_displayStringRowColumn(uint8_t row,uint8_t col,const uint8_t *Str);
-                                                                       ^
-main.c(137): warning: expression result unused [-Wunused-value]
-        for(CookingTimeInSecs;CookingTimeInSecs > 0;CookingTimeInSecs --)
-            ^~~~~~~~~~~~~~~~~
-main.c(240): warning: no newline at end of file [-Wnewline-eof]
-//}
-   ^
-58 warnings generated.
+main.c(179): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+     GPIOF->DATA &= ~0x08;
+                 ~~ ^~~~~
+main.c(182): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+main.c(170): warning: no previous prototype for function 'GPIOF_Handler' [-Wmissing-prototypes]
+void GPIOF_Handler(void)
+     ^
+main.c(170): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void GPIOF_Handler(void)
+^
+static 
+50 warnings generated.
 compiling main.c...
+gpio.c(1): warning: In file included from...
+./gpio.h(90): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+gpio.c(3): warning: In file included from...
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\TM4C123.h(98): warning: In file included from...
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(298): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(338): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(357): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(713): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(729): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(774): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(779): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(872): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(885): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(892): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(897): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(904): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(910): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(917): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(924): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(929): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(936): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(942): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(949): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(956): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(961): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(968): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(974): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(981): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(988): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(993): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1000): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1006): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1013): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1020): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1025): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1032): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1038): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1045): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1052): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1057): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1064): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1070): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1077): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1084): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1089): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1096): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1102): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/modyb/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1251): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+gpio.c(27): warning: enumeration value 'PIN_PULLDOWN_RESISTOR' not handled in switch [-Wswitch]
+                        switch(resistor)
+                               ^
+gpio.c(75): warning: enumeration value 'PIN_PULLDOWN_RESISTOR' not handled in switch [-Wswitch]
+                         switch(resistor)
+                                ^
+gpio.c(97): warning: enumeration value 'PIN_PULLDOWN_RESISTOR' not handled in switch [-Wswitch]
+       switch(resistor)
+              ^
+gpio.c(119): warning: enumeration value 'PIN_PULLDOWN_RESISTOR' not handled in switch [-Wswitch]
+                         switch(resistor)
+                                ^
+gpio.c(542): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    GPIOF->IS  &= ~(1<<4)|~(1<<0)|~(1<<2);        /* make bit 4, 0 edge sensitive */
+               ~~ ~~~~~~~~~~~~~~~^~~~~~~~
+gpio.c(543): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    GPIOF->IBE &=~(1<<4)|~(1<<0)|~(1<<2);         /* trigger is controlled by IEV */
+               ~~~~~~~~~~~~~~~~~^~~~~~~~
+gpio.c(544): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    GPIOF->IEV &= ~(1<<4)|~(1<<0)|~(1<<2);        /* falling edge trigger */
+               ~~ ~~~~~~~~~~~~~~~^~~~~~~~
+gpio.c(552): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+53 warnings generated.
+compiling gpio.c...
 linking...
-Program Size: Code=3174 RO-data=678 RW-data=0 ZI-data=608  
-".\Objects\Microwave.axf" - 0 Error(s), 58 Warning(s).
+Program Size: Code=1360 RO-data=636 RW-data=0 ZI-data=608  
+".\Objects\Microwave.axf" - 0 Error(s), 103 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -264,10 +381,10 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.5.0
 
    * Component: Keil::Device:Startup:1.0.1
-      Source file:   Device\Source\system_TM4C123.c
-      Include file:  Device\Include\TM4C123\TM4C123.h
       Source file:   Device\Source\ARM\startup_TM4C123.s
-Build Time Elapsed:  00:00:01
+      Include file:  Device\Include\TM4C123\TM4C123.h
+      Source file:   Device\Source\system_TM4C123.c
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

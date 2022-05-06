@@ -82,6 +82,8 @@ void GPIO_togglePort(uint32_t port_num );
 uint32_t GPIO_readPort(uint32_t port_num);
 /*   RETURN THE VALUE IN THE PORT                           */
 
+void GPIOF_EnableInt(void);
+	
 
 
 
