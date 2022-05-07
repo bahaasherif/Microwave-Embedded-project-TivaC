@@ -138,6 +138,7 @@ void GPIO_setupPinDirection(uint32_t port_num,uint8_t pin_num,GPIO_PinDirectionT
         SYSCTL->RCGCGPIO  |= 0x20; // Enable clock for PORTF
 			  GPIOF->LOCK =     0x4C4F434B;  ////It enables write access to GPIOCR register.
 			  GPIOF->CR = 0X01;  
+			  GPIOF->LOCK = 0;            /* lock commit register */
       
 				if ( direction == PIN_OUTPUT )
 					SET_BIT((GPIOF->DIR),pin_num);
