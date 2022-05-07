@@ -27,8 +27,7 @@
 //	uint8_t CookingTimeCaseD [] = {"0000"};
 //	
 
-//	
-//	
+//		
 //	while(1)
 //	{
 //		
@@ -203,9 +202,107 @@ int main(void)
 			  
 						break ;		
 			
-  		}			
+  		ERROR_CASE_B:						
+			case 'B' :
+				LCD_displayStringRowColumn(0,2,"BEEF WEIGHT?");
+			  EnteredCookingWeight = KEYPAD_Getkey();
+			  if((EnteredCookingWeight <='9') && (EnteredCookingWeight>='1'))
+          {
+						LCD_clearScreen();
+						LCD_displayCharacter(EnteredCookingWeight);
+						LCD_displayString(" kilos");
+						SysTick_Wait1s(2);
+						LCD_clearScreen();
+						CookingTimeInSecs = (EnteredCookingWeight - '0') * 30;
+						LCD_displayTime(CookingTimeInSecs);
+						while((SW2_FLAG) == 0);
+			      Display_Time(CookingTimeInSecs);
+			  
+						
+					}
+					
+				else{
+					LCD_clearScreen();
+					LCD_displayStringRowColumn(0,7,"ERR");
+					SysTick_Wait1s(2);
+					goto ERROR_CASE_B;
+					
+				}
+					break;
+				
+				
+				ERROR_CASE_C:	
+			case 'C' :
+				LCD_displayStringRowColumn(0,0,"Chicken WEIGHT?");
+			  EnteredCookingWeight = KEYPAD_Getkey();
+			  if((EnteredCookingWeight <='9') && (EnteredCookingWeight>='1'))
+          {
+						LCD_clearScreen();
+						LCD_displayCharacter(EnteredCookingWeight);
+						LCD_displayString(" kilos");
+						SysTick_Wait1s(2);
+						LCD_clearScreen();
+						CookingTimeInSecs = (EnteredCookingWeight - '0') * 12;
+						LCD_displayTime(CookingTimeInSecs);
+						while((SW2_FLAG) == 0);
+			      Display_Time(CookingTimeInSecs);
+					}
+					
+				else{
+					LCD_clearScreen();
+					LCD_displayStringRowColumn(0,7,"ERR");
+					SysTick_Wait1s(2);
+					goto ERROR_CASE_C;
+					
+				}
+					break;
+				 
+				ERROR_CASE_D:
+				case 'D' :
+			CASED_FLAG = 1;		
+			LCD_displayStringRowColumn(0,1,"Cooking Time?");
+			SysTick_Wait1s(2);
+			LCD_clearScreen();	
+				
+			LCD_displayStringRowColumn(1,6,"00:00");	
+			CookingTimeCaseD[0] = KEYPAD_Getkey();
+			LCD_displayCharRowColumn(1,10,CookingTimeCaseD[0]);
+				
+			CookingTimeCaseD[1] = KEYPAD_Getkey();
+			LCD_displayCharRowColumn(1,9,CookingTimeCaseD[0]);
+			LCD_displayCharRowColumn(1,10,CookingTimeCaseD[1]);
+			
+			CookingTimeCaseD[2] = KEYPAD_Getkey();
+			LCD_displayCharRowColumn(1,7,CookingTimeCaseD[0]);
+			LCD_displayCharRowColumn(1,9,CookingTimeCaseD[1]);
+			LCD_displayCharRowColumn(1,10,CookingTimeCaseD[2]);
+		  
+			CookingTimeCaseD[3] = KEYPAD_Getkey();
+			LCD_displayCharRowColumn(1,6,CookingTimeCaseD[0]);
+			LCD_displayCharRowColumn(1,7,CookingTimeCaseD[1]);
+			LCD_displayCharRowColumn(1,9,CookingTimeCaseD[2]);
+			LCD_displayCharRowColumn(1,10,CookingTimeCaseD[3]);
+			
+			if((CookingTimeCaseD[0]) <= '3' || ((CookingTimeCaseD[0] <= '2' ) && (CookingTimeCaseD[1] <= '9'))) {	
+			    CookingTimeInSecs = ((CookingTimeCaseD[0] - '0') * 600) + ((CookingTimeCaseD[1] - '0') * 60) + ((CookingTimeCaseD[2] - '0') * 10) + ((CookingTimeCaseD[3] - '0'));
+	        LCD_displayTime(CookingTimeInSecs);	
+			    while((SW2_FLAG) == 0);
+			    Display_Time(CookingTimeInSecs);
+			}
+			else {
+					LCD_clearScreen();
+					LCD_displayStringRowColumn(0,7,"ERR");
+					SysTick_Wait1s(2);
+					goto ERROR_CASE_D;
+					
+				}
+			break;
+      			
+		}			
   }
-}
+}	
+  
+
 	
 void Display_Time(int16_t CookingTimeInSecs) {
 
