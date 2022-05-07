@@ -186,9 +186,7 @@ void GPIOF_Handler(void)
   
  if (BIT_IS_SET((GPIOF->MIS),4)) {
 	 
-//	 
-//				delayMs(50);
-//	 if(BIT_IS_SET((GPIOF->MIS),4)) {
+
 				if(SW1_FLAG == 0)
 				   SW1_FLAG = 1;	
         else 
@@ -196,10 +194,7 @@ void GPIOF_Handler(void)
 				
 			  CLEAR_FLAG ++ ;
 				
-				GPIOF->ICR |= 0x10; /* clear the interrupt flag */
-				
-//			}
-
+				GPIOF->ICR |= 0x10; /* clear the interrupt flag */	
        
 			
  } 
