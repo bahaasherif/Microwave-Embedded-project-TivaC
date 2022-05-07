@@ -146,37 +146,89 @@
 
 #include "TM4C123.h"                    // Device header
 
+static volatile uint8_t SW2_FLAG = 0;
+static volatile uint8_t SW1_FLAG = 0;
+static volatile uint8_t CLEAR_FLAG = 1; 
+static volatile uint8_t CASED_FLAG = 0;
+
+void Display_Time(int16_t CookingTimeInSecs);
+void GPIOF_Handler(void);
+
 int main(void)
-{
-    
-	GPIO_setupPinDirection(PORTF_ID,PIN0_ID,PIN_INPUT,PIN_PULLUP_RESISTOR);
+{	
+	SysTick_Init();
+	LCD_Init();
+	KEYPAD_Init();
+	
 	GPIO_setupPinDirection(PORTF_ID,PIN4_ID,PIN_INPUT,PIN_PULLUP_RESISTOR);
-	GPIO_setupPinDirection(PORTF_ID,PIN3_ID,PIN_OUTPUT,PIN_NO_RESISTOR);
-	
+  GPIO_setupPinDirection(PORTF_ID,PIN0_ID,PIN_INPUT,PIN_PULLUP_RESISTOR);
+	 
+  GPIOF_EnableInt();
 
-	GPIOF_EnableInt();
-	
- 
-
-    
+	uint8_t COOKING_CASE  = '0';
+	uint8_t EnteredCookingWeight = '0';
+	uint8_t CookingTimeCaseD [] = {"0000"};
+	int16_t CookingTimeInSecs = 0 ;
+  
     while(1)
     {
 			// do nothing and wait for the interrupt to occur
-    }
+			
+			COOKING_CASE = KEYPAD_Getkey();
+		
+		switch(COOKING_CASE) {
+			
+			case 'A' :
+				LCD_displayStringRowColumn(0,4,"POP CORN");
+			  CookingTimeInSecs = 60 ;
+			  LCD_displayTime(CookingTimeInSecs);
+			  while((SW2_FLAG) == 0);
+			  Display_Time(CookingTimeInSecs);
+			  
+						break ;		
+			
+  		}			
+  }
 }
+	
+void Display_Time(int16_t CookingTimeInSecs) {
+
+		for(CookingTimeInSecs;CookingTimeInSecs >= 0;CookingTimeInSecs --){
+							LCD_displayTime(CookingTimeInSecs);
+							
+			
+			if((CLEAR_FLAG != 1) && ((CLEAR_FLAG / 3 ) == 1))
+								break;  
+      if((CASED_FLAG == 1) && (SW1_FLAG == 1))
+                break;				                                                                                             
+      while( SW1_FLAG == 1 )
+							 LCD_displayTime(CookingTimeInSecs); 
+			
+			SysTick_Wait1s(1);
+													                                   
+						}
+		LCD_clearScreen();
+		SW2_FLAG = SW1_FLAG = 0;
+    CLEAR_FLAG = 1;	
+    CASED_FLAG = 0;						
+						
+}
+
+
+
+
 
 /* SW1 is connected to PF4 pin, SW2 is connected to PF0. */
 /* Both of them trigger PORTF falling edge interrupt */
-void GPIOF_Handler(void)
-{	
-  if (BIT_IS_SET((GPIOF->MIS),4)) /* check if interrupt causes by PF4/SW1*/
+void GPIOF_Handler(void){
+	if (BIT_IS_SET((GPIOF->MIS),4)) /* check if interrupt causes by PF4/SW1*/
     {   
-      GPIOF->DATA |= (1<<3);
+			GPIOF->DATA |= (1<<3);
       GPIOF->ICR |= 0x10; /* clear the interrupt flag */
-     } 
+    } 
     else if (BIT_IS_SET((GPIOF->MIS),0)) /* check if interrupt causes by PF0/SW2 */
     {   
      GPIOF->DATA &= ~0x08;
      GPIOF->ICR |= 0x01; /* clear the interrupt flag */
-    }
+    }				
 }
