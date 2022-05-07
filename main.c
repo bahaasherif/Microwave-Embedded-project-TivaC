@@ -144,6 +144,22 @@
 //	
 //}
 
+///* SW1 is connected to PF4 pin, SW2 is connected to PF0. */
+///* Both of them trigger PORTF falling edge interrupt */
+//void GPIOF_Handler(void){
+//	if (BIT_IS_SET((GPIOF->MIS),4)) /* check if interrupt causes by PF4/SW1*/
+//    {   
+//			GPIOF->DATA |= (1<<3);
+//      GPIOF->ICR |= 0x10; /* clear the interrupt flag */
+//    } 
+//    else if (BIT_IS_SET((GPIOF->MIS),0)) /* check if interrupt causes by PF0/SW2 */
+//    {   
+//     GPIOF->DATA &= ~0x08;
+//     GPIOF->ICR |= 0x01; /* clear the interrupt flag */
+//    }				
+//}
+
+
 #include "TM4C123.h"                    // Device header
 
 static volatile uint8_t SW2_FLAG = 0;
@@ -214,21 +230,34 @@ void Display_Time(int16_t CookingTimeInSecs) {
 						
 }
 
-
-
-
-
 /* SW1 is connected to PF4 pin, SW2 is connected to PF0. */
 /* Both of them trigger PORTF falling edge interrupt */
-void GPIOF_Handler(void){
-	if (BIT_IS_SET((GPIOF->MIS),4)) /* check if interrupt causes by PF4/SW1*/
-    {   
-			GPIOF->DATA |= (1<<3);
-      GPIOF->ICR |= 0x10; /* clear the interrupt flag */
-    } 
+void GPIOF_Handler(void)
+{	
+  
+ if (BIT_IS_SET((GPIOF->MIS),4)) {
+				
+				if(SW1_FLAG == 0)
+				   SW1_FLAG = 1;	
+        else 
+           SW1_FLAG = 0;
+				
+			  CLEAR_FLAG ++ ;
+
+       GPIOF->ICR |= 0x10; /* clear the interrupt flag */
+			
+ } 
     else if (BIT_IS_SET((GPIOF->MIS),0)) /* check if interrupt causes by PF0/SW2 */
     {   
-     GPIOF->DATA &= ~0x08;
-     GPIOF->ICR |= 0x01; /* clear the interrupt flag */
-    }				
+			
+				SW2_FLAG = 1;
+        SW1_FLAG = 0;
+				
+        GPIOF->ICR |= 0x01; /* clear the interrupt flag */
+			
+    }
+	
 }
+
+
+
