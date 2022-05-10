@@ -79,7 +79,7 @@ void LCD_clearScreen(void)
 
 
 
-void LCD_displayTime(uint32_t Time_In_Secs)
+void LCD_displayTime(int16_t Time_In_Secs)
 {
 	uint16_t Seconds = Time_In_Secs % 60;
 	uint16_t Minutes = Time_In_Secs / 60;

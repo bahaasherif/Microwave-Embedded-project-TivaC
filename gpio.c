@@ -541,8 +541,11 @@ void GPIOF_EnableInt(void) {
 	
 	   /* configure PORTF4, 0 for falling edge trigger interrupt */
     GPIOF->IS  &= ~(1<<4)|~(1<<0)|~(1<<2);        /* make bit 4, 0 edge sensitive */
-    GPIOF->IBE &=~(1<<4)|~(1<<0)|~(1<<2);         /* trigger is controlled by IEV */
-    GPIOF->IEV &= ~(1<<4)|~(1<<0)|~(1<<2);        /* falling edge trigger */
+    GPIOF->IBE &=~(1<<4)|~(1<<0);         /* trigger is controlled by IEV */
+	  GPIOF->IBE |= (1<<2);
+    GPIOF->IEV &= ~(1<<4)|~(1<<0);        /* falling edge trigger */
+	
+	
     GPIOF->ICR |= (1<<4)|(1<<0)|(1<<2);          /* clear any prior interrupt */
     GPIOF->IM  |= (1<<4)|(1<<0)|(1<<2);          /* unmask interrupt */
     

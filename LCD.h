@@ -91,7 +91,7 @@ void LCD_clearScreen(void);
                  Function to show time in mm:ss format
 **************************************************************************************/
 
-void LCD_displayTime(uint32_t Time_In_Secs);
+void LCD_displayTime(int16_t Time_In_Secs);
 
 /*************************************************************************************
                  Function to show string in the specifed loaction
