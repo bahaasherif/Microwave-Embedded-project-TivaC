@@ -140,7 +140,12 @@ int main( void ) {
 			    CookingTimeInSecs = ((CookingTimeCaseD[0] - '0') * 600) + ((CookingTimeCaseD[1] - '0') * 60) + ((CookingTimeCaseD[2] - '0') * 10) + ((CookingTimeCaseD[3] - '0'));
 	     if((CookingTimeInSecs <= 1800) && CookingTimeCaseD[2] <='6') {   
 					LCD_displayTime(CookingTimeInSecs);	
-			    while(SW2_FLAG == 0);
+			    while(SW2_FLAG == 0) {
+						if (CLEAR_FLAG == 1) {
+							SW2_FLAG = 1 ;
+							break;
+						}
+					};
 			    Display_Time(CookingTimeInSecs);
 			  }
 			else {
