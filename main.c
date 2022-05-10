@@ -11,6 +11,7 @@ static volatile uint8_t CASED_FLAG ;
 
 void Display_Time(int16_t CookingTimeInSecs);
 void GPIOF_Handler(void);
+void ToggleLedBuzzer(void);
 
 
 int main( void ) {
@@ -22,6 +23,9 @@ int main( void ) {
 
   GPIO_setupPinDirection(PORTF_ID,PIN4_ID,PIN_INPUT,PIN_PULLUP_RESISTOR);
   GPIO_setupPinDirection(PORTF_ID,PIN0_ID,PIN_INPUT,PIN_PULLUP_RESISTOR);
+	GPIO_setupPinDirection(PORTA_ID,PIN6_ID,PIN_OUTPUT,PIN_NO_RESISTOR);// BUZZER
+	GPIO_setupPinDirection(PORTA_ID,PIN7_ID,PIN_OUTPUT,PIN_NO_RESISTOR);// LED
+
 	
 	 
   GPIOF_EnableInt();
@@ -39,18 +43,14 @@ int main( void ) {
 	{
 		
 		COOKING_CASE = KEYPAD_Getkey();
-		SW2_FLAG = 0;
-    SW1_FLAG = 0;
-    CLEAR_FLAG = 1; 
-    CASED_FLAG = 0;
-		
+				
 		switch(COOKING_CASE) {
 			
 			case 'A' :
 				LCD_displayStringRowColumn(0,4,"POP CORN");
 			  CookingTimeInSecs = 60 ;
 			  LCD_displayTime(CookingTimeInSecs);
-			  while((SW2_FLAG) == 0);
+			  while(SW2_FLAG == 0) ;
 			  Display_Time(CookingTimeInSecs);
 						break ;		
 						
@@ -67,7 +67,7 @@ int main( void ) {
 						LCD_clearScreen();
 						CookingTimeInSecs = (EnteredCookingWeight - '0') * 30;
 						LCD_displayTime(CookingTimeInSecs);
-						while((SW2_FLAG) == 0);
+						while(SW2_FLAG == 0);
 			      Display_Time(CookingTimeInSecs);		
 					}
 					
@@ -95,7 +95,7 @@ int main( void ) {
 						LCD_clearScreen();
 						CookingTimeInSecs = (EnteredCookingWeight - '0') * 12;
 						LCD_displayTime(CookingTimeInSecs);
-						while((SW2_FLAG) == 0);
+						while(SW2_FLAG == 0);
 			      Display_Time(CookingTimeInSecs);
 					}
 					
@@ -134,10 +134,11 @@ int main( void ) {
 			LCD_displayCharRowColumn(1,9,CookingTimeCaseD[2]);
 			LCD_displayCharRowColumn(1,10,CookingTimeCaseD[3]);
 			
-			if((CookingTimeCaseD[0]) <= '3' || ((CookingTimeCaseD[0] <= '2' ) && (CookingTimeCaseD[1] <= '9')) && CookingTimeCaseD[2] <= 6) {	
+			
 			    CookingTimeInSecs = ((CookingTimeCaseD[0] - '0') * 600) + ((CookingTimeCaseD[1] - '0') * 60) + ((CookingTimeCaseD[2] - '0') * 10) + ((CookingTimeCaseD[3] - '0'));
-	        LCD_displayTime(CookingTimeInSecs);	
-			    while((SW2_FLAG) == 0);
+	     if((CookingTimeInSecs <= 1800) && CookingTimeCaseD[2] <='6') {   
+					LCD_displayTime(CookingTimeInSecs);	
+			    while(SW2_FLAG == 0);
 			    Display_Time(CookingTimeInSecs);
 			  }
 			else {
@@ -154,28 +155,57 @@ int main( void ) {
 }
 
 
-
-	
 void Display_Time(int16_t CookingTimeInSecs) {
 
 		for(CookingTimeInSecs;CookingTimeInSecs >= 0;CookingTimeInSecs --){
 							LCD_displayTime(CookingTimeInSecs);
 							
-			
+			GPIO_writePin(PORTA_ID,PIN7_ID,LOGIC_HIGH);
 			if((CLEAR_FLAG != 2) && ((CLEAR_FLAG / 3 ) == 1))
 								break;  
       if((CASED_FLAG == 1) && (SW1_FLAG == 1))
                 break;				                                                                                             
-      while( (SW1_FLAG == 1) )
+      while( (SW1_FLAG == 1) ) {
 							 LCD_displayTime(CookingTimeInSecs); 
-			
+				       GPIO_togglePin(PORTA_ID,PIN7_ID);
+				       delayMs(500);
+			}
 			SysTick_Wait1s(1);
 													                                   
 						}
+		if(CookingTimeInSecs == -1) {
+			ToggleLedBuzzer();
+		}
 		LCD_clearScreen();
-		
+		GPIO_writePin(PORTA_ID,PIN7_ID,LOGIC_LOW);				
+		SW2_FLAG = 0;
+		SW1_FLAG = 0;
+    CLEAR_FLAG = 1; 
+		CASED_FLAG = 0;
     						
 						
+}
+
+void ToggleLedBuzzer(void) {
+	
+      GPIO_writePin(PORTA_ID,PIN6_ID,LOGIC_HIGH);
+			GPIO_writePin(PORTA_ID,PIN7_ID,LOGIC_HIGH);
+			SysTick_Wait1s(1);
+			GPIO_writePin(PORTA_ID,PIN6_ID,LOGIC_LOW);
+			GPIO_writePin(PORTA_ID,PIN7_ID,LOGIC_LOW);
+			delayMs(300);
+			GPIO_writePin(PORTA_ID,PIN6_ID,LOGIC_HIGH);
+			GPIO_writePin(PORTA_ID,PIN7_ID,LOGIC_HIGH);
+			SysTick_Wait1s(1);
+			GPIO_writePin(PORTA_ID,PIN6_ID,LOGIC_LOW);
+			GPIO_writePin(PORTA_ID,PIN7_ID,LOGIC_LOW);
+			delayMs(300);
+			GPIO_writePin(PORTA_ID,PIN6_ID,LOGIC_HIGH);
+			GPIO_writePin(PORTA_ID,PIN7_ID,LOGIC_HIGH);
+			SysTick_Wait1s(1);
+			GPIO_writePin(PORTA_ID,PIN6_ID,LOGIC_LOW);
+			GPIO_writePin(PORTA_ID,PIN7_ID,LOGIC_LOW);
+			delayMs(300);			
 }
 
 
@@ -185,8 +215,10 @@ void GPIOF_Handler(void)
 {	
   
  if (BIT_IS_SET((GPIOF->MIS),4)) {
-	 
-
+ 
+     delayMs(150);
+     	 
+      if (BIT_IS_SET((GPIOF->MIS),4)){ //Debouncing 
 				if(SW1_FLAG == 0)
 				   SW1_FLAG = 1;	
         else 
@@ -194,19 +226,22 @@ void GPIOF_Handler(void)
 				
 			  CLEAR_FLAG ++ ;
 				
+				
 				GPIOF->ICR |= 0x10; /* clear the interrupt flag */	
        
-			
+			}
  } 
     else if (BIT_IS_SET((GPIOF->MIS),0)) /* check if interrupt causes by PF0/SW2 */
     {   
-			
+			delayMs(150);
+			if (BIT_IS_SET((GPIOF->MIS),0)) { //Debouncing
 				SW2_FLAG = 1;
         SW1_FLAG = 0;
+			  CLEAR_FLAG = 1;
 			
 				
         GPIOF->ICR |= 0x01; /* clear the interrupt flag */
-			
+			}
 		}
 	
 }
