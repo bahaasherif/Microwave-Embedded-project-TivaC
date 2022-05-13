@@ -168,7 +168,7 @@ void Display_Time(int16_t CookingTimeInSecs) {
 							LCD_displayTime(CookingTimeInSecs);
 							
 			GPIO_writePin(PORTA_ID,PIN7_ID,LOGIC_HIGH);
-			if((CLEAR_FLAG != 2) && ((CLEAR_FLAG / 3 ) == 1))
+			if((CLEAR_FLAG != 1) && ((CLEAR_FLAG / 2 ) == 1))
 								break;  
       if((CASED_FLAG == 1) && (SW1_FLAG == 1))
                 break;				                                                                                             
@@ -187,7 +187,7 @@ void Display_Time(int16_t CookingTimeInSecs) {
 		GPIO_writePin(PORTA_ID,PIN7_ID,LOGIC_LOW);				
 		SW2_FLAG = 0;
 		SW1_FLAG = 0;
-    CLEAR_FLAG = 1; 
+    CLEAR_FLAG = 0; 
 		CASED_FLAG = 0;
     						
 						
@@ -223,7 +223,7 @@ void GPIOF_Handler(void)
   
  if (BIT_IS_SET((GPIOF->MIS),4)) {
  
-     delayMs(150);
+     delayMs(200);
      	 
       if (BIT_IS_SET((GPIOF->MIS),4)){ //Debouncing 
 				if(SW1_FLAG == 0)
@@ -240,11 +240,11 @@ void GPIOF_Handler(void)
  } 
     else if (BIT_IS_SET((GPIOF->MIS),0)) /* check if interrupt causes by PF0/SW2 */
     {   
-			delayMs(150);
+			delayMs(200);
 			if (BIT_IS_SET((GPIOF->MIS),0)) { //Debouncing
 				SW2_FLAG = 1;
         SW1_FLAG = 0;
-			  CLEAR_FLAG = 1;
+			  CLEAR_FLAG = 0;
 			
 				
         GPIOF->ICR |= 0x01; /* clear the interrupt flag */
@@ -253,7 +253,7 @@ void GPIOF_Handler(void)
 		
 		 else if (BIT_IS_SET((GPIOF->MIS),2)) /* check if interrupt causes by PF0/SW2 */
     {   
-			delayMs(150);
+			delayMs(200);
 			if (BIT_IS_SET((GPIOF->MIS),2)) { //Debouncing
 			
 				if(DOOR_FLAG == 0)
