@@ -19,7 +19,7 @@
 #define    PORTE_ID                         4
 #define    PORTF_ID                         5
 
-
+ 
 #define    PIN0_ID                          0
 #define    PIN1_ID                          1
 #define    PIN2_ID                          2
@@ -82,6 +82,8 @@ void GPIO_togglePort(uint32_t port_num );
 uint32_t GPIO_readPort(uint32_t port_num);
 /*   RETURN THE VALUE IN THE PORT                           */
 
+void GPIOF_EnableInt(void);
+	
 
 
 

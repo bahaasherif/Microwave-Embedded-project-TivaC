@@ -137,27 +137,32 @@ void GPIO_setupPinDirection(uint32_t port_num,uint8_t pin_num,GPIO_PinDirectionT
 			case PORTF_ID :
         SYSCTL->RCGCGPIO  |= 0x20; // Enable clock for PORTF
 			  GPIOF->LOCK =     0x4C4F434B;  ////It enables write access to GPIOCR register.
-			  GPIOF->DEN        |=(1<<pin_num);
-       switch(resistor)
+			  GPIOF->CR = 0X01;  
+			  GPIOF->LOCK = 0;            /* lock commit register */
+      
+				if ( direction == PIN_OUTPUT )
+					SET_BIT((GPIOF->DIR),pin_num);
+				else
+					CLEAR_BIT((GPIOF->DIR),pin_num);
+				
+				GPIOF->DEN        |=(1<<pin_num);
+				
+				 switch(resistor)
 			{
 				case PIN_NO_RESISTOR :
 					break;
 				
 				case PIN_PULLUP_RESISTOR:
-					GPIOF->CR = 0X01;
+					
 				  SET_BIT((GPIOF->PUR),pin_num);
 				  break;
 				
 				case PIN_PULLDOWN_RESISTOR :
-					GPIOF->CR = 0X01;
+					
 				  SET_BIT((GPIOF->PDR),pin_num);
 				  break;
 			}			
-				if ( direction == PIN_OUTPUT )
-					SET_BIT((GPIOF->DIR),pin_num);
-				else
-					CLEAR_BIT((GPIOF->DIR),pin_num);
-				break;		
+         break;			
 
 					
 		}
@@ -529,4 +534,23 @@ uint32_t GPIO_readPort(uint32_t port_num)
 	}
 	
 	return port_value;
+}
+
+
+void GPIOF_EnableInt(void) {
+	
+	   /* configure PORTF4, 0 for falling edge trigger interrupt */
+    GPIOF->IS  &= ~(1<<4)|~(1<<0)|~(1<<2);        /* make bit 4, 0 edge sensitive */
+    GPIOF->IBE &=~(1<<4)|~(1<<0);         /* trigger is controlled by IEV */
+	  GPIOF->IBE |= (1<<2);
+    GPIOF->IEV &= ~(1<<4)|~(1<<0);        /* falling edge trigger */
+	
+	
+    GPIOF->ICR |= (1<<4)|(1<<0)|(1<<2);          /* clear any prior interrupt */
+    GPIOF->IM  |= (1<<4)|(1<<0)|(1<<2);          /* unmask interrupt */
+    
+    /* enable interrupt in NVIC and set priority to 3 */
+    NVIC->IP[30] = 3 << 5;     /* set interrupt priority to 3 */
+    NVIC->ISER[0] |= (1<<30);  /* enable IRQ30 (D30 of ISER[0]) */
+	
 }
