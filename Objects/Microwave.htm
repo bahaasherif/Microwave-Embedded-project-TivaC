@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Microwave.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Microwave.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Wed May 11 15:57:15 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Mon May 16 21:45:31 2022
 <BR><P>
 <H3>Maximum Stack Usage =        184 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1338,7 +1338,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[28]"></a>GPIOF_Handler</STRONG> (Thumb, 182 bytes, Stack size 8 bytes, main.o(.text.GPIOF_Handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = GPIOF_Handler &rArr; delayMs
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GPIOF_Handler &rArr; delayMs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayMs
 </UL>
@@ -1364,7 +1364,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[9c]"></a>KEYPAD_Getkey</STRONG> (Thumb, 144 bytes, Stack size 40 bytes, keypad.o(.text.KEYPAD_Getkey))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = KEYPAD_Getkey &rArr; delayUs
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = KEYPAD_Getkey &rArr; delayUs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayUs
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayMs
@@ -1377,7 +1377,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[9e]"></a>LCD_Init</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, lcd.o(.text.LCD_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = LCD_Init &rArr; LCD_sendCommand &rArr; LCD_writeBits &rArr; delayUs
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = LCD_Init &rArr; LCD_sendCommand &rArr; LCD_writeBits &rArr; delayUs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_sendCommand
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_setupPortDirection
@@ -1397,7 +1397,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[9b]"></a>LCD_clearScreen</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, lcd.o(.text.LCD_clearScreen))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = LCD_clearScreen &rArr; LCD_sendCommand &rArr; LCD_writeBits &rArr; delayUs
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = LCD_clearScreen &rArr; LCD_sendCommand &rArr; LCD_writeBits &rArr; delayUs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_sendCommand
 </UL>
@@ -1406,7 +1406,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a3]"></a>LCD_displayCharRowColumn</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, lcd.o(.text.LCD_displayCharRowColumn))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = LCD_displayCharRowColumn &rArr; LCD_goToRowColumn &rArr; LCD_sendCommand &rArr; LCD_writeBits &rArr; delayUs
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = LCD_displayCharRowColumn &rArr; LCD_goToRowColumn &rArr; LCD_sendCommand &rArr; LCD_writeBits &rArr; delayUs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_goToRowColumn
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_displayCharacter
@@ -1415,7 +1415,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a2]"></a>LCD_displayCharacter</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, lcd.o(.text.LCD_displayCharacter))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = LCD_displayCharacter &rArr; LCD_writeBits &rArr; delayUs
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = LCD_displayCharacter &rArr; LCD_writeBits &rArr; delayUs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_writeBits
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayUs
@@ -1428,7 +1428,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a6]"></a>LCD_displayString</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, lcd.o(.text.LCD_displayString))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = LCD_displayString &rArr; LCD_displayCharacter &rArr; LCD_writeBits &rArr; delayUs
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = LCD_displayString &rArr; LCD_displayCharacter &rArr; LCD_writeBits &rArr; delayUs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_displayCharacter
 </UL>
@@ -1437,7 +1437,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a7]"></a>LCD_displayStringRowColumn</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, lcd.o(.text.LCD_displayStringRowColumn))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = LCD_displayStringRowColumn &rArr; LCD_displayString &rArr; LCD_displayCharacter &rArr; LCD_writeBits &rArr; delayUs
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = LCD_displayStringRowColumn &rArr; LCD_displayString &rArr; LCD_displayCharacter &rArr; LCD_writeBits &rArr; delayUs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_goToRowColumn
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_displayString
@@ -1458,7 +1458,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a4]"></a>LCD_goToRowColumn</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, lcd.o(.text.LCD_goToRowColumn))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = LCD_goToRowColumn &rArr; LCD_sendCommand &rArr; LCD_writeBits &rArr; delayUs
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = LCD_goToRowColumn &rArr; LCD_sendCommand &rArr; LCD_writeBits &rArr; delayUs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_sendCommand
 </UL>
@@ -1468,7 +1468,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a0]"></a>LCD_sendCommand</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, lcd.o(.text.LCD_sendCommand))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = LCD_sendCommand &rArr; LCD_writeBits &rArr; delayUs
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = LCD_sendCommand &rArr; LCD_writeBits &rArr; delayUs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_writeBits
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayMs
@@ -1479,7 +1479,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a5]"></a>LCD_writeBits</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, lcd.o(.text.LCD_writeBits))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = LCD_writeBits &rArr; delayUs
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = LCD_writeBits &rArr; delayUs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayUs
 </UL>
@@ -1492,11 +1492,13 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a8]"></a>SysTick_Wait</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, systick.o(.text.SysTick_Wait))
-<BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Wait1s
+<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayUs
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayMs
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Wait1s
 </UL>
 
-<P><STRONG><a name="[99]"></a>SysTick_Wait1s</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, systick.o(.text.SysTick_Wait1s))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SysTick_Wait1s
+<P><STRONG><a name="[99]"></a>SysTick_Wait1s</STRONG> (Thumb, 46 bytes, Stack size 24 bytes, systick.o(.text.SysTick_Wait1s))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SysTick_Wait1s
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Wait
 </UL>
@@ -1509,7 +1511,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(.text)
 </UL>
 <P><STRONG><a name="[9a]"></a>ToggleLedBuzzer</STRONG> (Thumb, 166 bytes, Stack size 8 bytes, main.o(.text.ToggleLedBuzzer))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = ToggleLedBuzzer &rArr; SysTick_Wait1s
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = ToggleLedBuzzer &rArr; SysTick_Wait1s
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayMs
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Wait1s
@@ -1518,8 +1520,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Time
 </UL>
 
-<P><STRONG><a name="[98]"></a>delayMs</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, systick.o(.text.delayMs))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = delayMs
+<P><STRONG><a name="[98]"></a>delayMs</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, systick.o(.text.delayMs))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = delayMs
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Wait
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_sendCommand
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ToggleLedBuzzer
@@ -1529,8 +1533,10 @@ Global Symbols
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Time
 </UL>
 
-<P><STRONG><a name="[9d]"></a>delayUs</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, systick.o(.text.delayUs))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = delayUs
+<P><STRONG><a name="[9d]"></a>delayUs</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, systick.o(.text.delayUs))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = delayUs
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Wait
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_writeBits
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_displayCharacter
