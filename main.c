@@ -145,7 +145,7 @@ int main( void ) {
 							SW2_FLAG = 1 ;
 							break;
 						}
-					};
+					}
 			    Display_Time(CookingTimeInSecs);
 			  }
 			else {
