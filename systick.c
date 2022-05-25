@@ -23,25 +23,28 @@ while (BIT_IS_CLEAR((SysTick->CTRL),16U)); //wait for flag
 }                                         
 
 void SysTick_Wait1s(uint32_t delay) {
-	unsigned long i; 
+	volatile unsigned long i; 
 	for (i=0; i<delay; i++){       
 		SysTick_Wait(16000000); //wait 1 second
  }
 }
 	
-void delayMs(uint32_t n)
+void delayMs(uint32_t delay)
 {  
-	volatile uint32_t i,j;             //volatile is important for variables incremented in code
-	for(i=0;i<n;i++)
-		for(j=0;j<1590;j++);       //delay for 1 msec
+	volatile unsigned long i; 
+	for (i=0; i<delay; i++){       
+		SysTick_Wait(16000); //delay for 1 melli second
+	}	
 		
 }
 
 
-void delayUs(uint32_t n)             
+void delayUs(uint32_t delay)             
 {
-	volatile uint32_t i,j;							//volatile is important for variables incremented in code
-	for(i=0;i<n;i++)
-		for(j=0;j<3;j++);            //delay for 1 micro second
-		
+	volatile unsigned long i; 
+	for (i=0; i<delay; i++){       
+		SysTick_Wait(16); //delay for 1 micro second
+	}	
 }
+
+ 
