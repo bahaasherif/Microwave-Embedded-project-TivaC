@@ -142,6 +142,7 @@ int main( void ) {
 					LCD_displayTime(CookingTimeInSecs);	
 			    while(SW2_FLAG == 0) {
 						if (CLEAR_FLAG == 1) {
+							CLEAR_FLAG = 2;
 							SW2_FLAG = 1 ;
 							break;
 						}
@@ -221,7 +222,7 @@ void ToggleLedBuzzer(void) {
 void GPIOF_Handler(void)
 {	
   
- if (BIT_IS_SET((GPIOF->MIS),4)) {
+ if (BIT_IS_SET((GPIOF->MIS),4)) { //sw
  
      delayMs(200);
      	 
@@ -251,7 +252,7 @@ void GPIOF_Handler(void)
 			}
 		}
 		
-		 else if (BIT_IS_SET((GPIOF->MIS),2)) /* check if interrupt causes by PF0/SW2 */
+		 else if (BIT_IS_SET((GPIOF->MIS),2)) /* check if interrupt causes by PF2/SW3 */
     {   
 			delayMs(200);
 			if (BIT_IS_SET((GPIOF->MIS),2)) { //Debouncing

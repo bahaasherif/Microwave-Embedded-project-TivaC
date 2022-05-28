@@ -93,8 +93,8 @@
       <flags>2</flags>
       <showCmd>3</showCmd>
       <MinPosition>
-        <xPos>-1</xPos>
-        <yPos>-1</yPos>
+        <xPos>-32000</xPos>
+        <yPos>-32000</yPos>
       </MinPosition>
       <MaxPosition>
         <xPos>-1</xPos>
@@ -1480,7 +1480,7 @@
       <Window>
         <RegID>50009</RegID>
         <PaneID>50009</PaneID>
-        <IsVisible>0</IsVisible>
+        <IsVisible>1</IsVisible>
         <IsFloating>0</IsFloating>
         <IsTabbed>0</IsTabbed>
         <IsActivated>0</IsActivated>
@@ -1490,11 +1490,11 @@
         <RecentRowIndex>0</RecentRowIndex>
         <RectRecentDocked>
           <Len>16</Len>
-          <Data>B3030000660000006D0400008C010000</Data>
+          <Data>C700000066000000C902000081000000</Data>
         </RectRecentDocked>
         <RectRecentFloat>
           <Len>16</Len>
-          <Data>70000000870000003001000027010000</Data>
+          <Data>0A0000000A0000006E0000006E000000</Data>
         </RectRecentFloat>
       </Window>
       <Window>
@@ -3606,9 +3606,9 @@
       <ActiveTab>0</ActiveTab>
       <Doc>
         <Name>.\main.c</Name>
-        <ColumnNumber>62</ColumnNumber>
-        <TopLine>127</TopLine>
-        <CurrentLine>141</CurrentLine>
+        <ColumnNumber>13</ColumnNumber>
+        <TopLine>187</TopLine>
+        <CurrentLine>183</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
@@ -3624,9 +3624,9 @@
       </Doc>
       <Doc>
         <Name>.\gpio.c</Name>
-        <ColumnNumber>21</ColumnNumber>
-        <TopLine>1</TopLine>
-        <CurrentLine>3</CurrentLine>
+        <ColumnNumber>32</ColumnNumber>
+        <TopLine>449</TopLine>
+        <CurrentLine>546</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
@@ -3643,7 +3643,7 @@
       <Doc>
         <Name>.\systick.c</Name>
         <ColumnNumber>0</ColumnNumber>
-        <TopLine>1</TopLine>
+        <TopLine>6</TopLine>
         <CurrentLine>28</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
@@ -3678,7 +3678,7 @@
       </Doc>
       <Doc>
         <Name>.\keypad.c</Name>
-        <ColumnNumber>23</ColumnNumber>
+        <ColumnNumber>43</ColumnNumber>
         <TopLine>16</TopLine>
         <CurrentLine>35</CurrentLine>
         <Folding>1</Folding>
